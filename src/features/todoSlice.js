@@ -53,6 +53,10 @@ const todoSlice = createSlice({
       });
       localStorage.setItem("Todo State", JSON.stringify(state));
     },
+    clearTodos(state) {
+      state.todos = [];
+      localStorage.removeItem("Todo State");
+    },
   },
 });
 
@@ -62,5 +66,6 @@ export const {
   toggleTodo,
   toggleAllTodos,
   updateTodo,
+  clearTodos,
 } = todoSlice.actions;
 export default todoSlice.reducer;
