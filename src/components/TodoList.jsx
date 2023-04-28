@@ -1,15 +1,19 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteTodo, toggleAllTodos, toggleTodo } from "../features/todoSlice";
 
 function TodoList() {
-  const { todos } = useSelector((state) => state.todos);
+  const { todos, resolveAll } = useSelector((state) => state.todos);
+  const dispatch = useDispatch();
 
+  if (todos.length < 1)
+    return (
+      <div>
+        <h3>Oops!</h3>
+        <p>You don't have a todo yet.</p>
+      </div>
+    );
   return (
-    // <ul>
-    //   {todos?.map((todo) => (
-    //     <li key={todo.id}>{todo.title}</li>
-    //   ))}
-    // </ul>
     <div className="overflow-x-auto w-full">
       <table className="table table-zebra w-full">
         {/* head */}
@@ -17,7 +21,12 @@ function TodoList() {
           <tr className="!bg-purple-500">
             <th>
               <label>
-                <input type="checkbox" className="checkbox" />
+                <input
+                  type="checkbox"
+                  className="checkbox"
+                  checked={resolveAll}
+                  onChange={() => dispatch(toggleAllTodos())}
+                />
               </label>
             </th>
             <th>Name</th>
@@ -39,7 +48,8 @@ function TodoList() {
 export default TodoList;
 
 export const Todo = (todo) => {
-  console.log(todo);
+  const dispatch = useDispatch();
+
   return (
     <tr>
       <th>
@@ -48,6 +58,7 @@ export const Todo = (todo) => {
             type="checkbox"
             className="checkbox"
             checked={todo.completed}
+            onChange={() => dispatch(toggleTodo(todo.id))}
           />
         </label>
       </th>
@@ -70,7 +81,10 @@ export const Todo = (todo) => {
           <button className="btn-outline btn-success btn-xs flex items-center">
             Edit
           </button>
-          <button className="btn-outline btn-error btn-xs flex items-center">
+          <button
+            onClick={() => dispatch(deleteTodo(todo.id))}
+            className="btn-outline btn-error btn-xs flex items-center"
+          >
             Delete
           </button>
         </div>
