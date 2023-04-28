@@ -32,9 +32,9 @@ const todoSlice = createSlice({
     },
     toggleAllTodos(state) {
       state.resolveAll = !state.resolveAll;
-      if (state.resolveAll === true)
-        state.todos.map((todo) => (todo.completed = true));
-      else state.todos.map((todo) => (todo.completed = false));
+      state.todos.map((todo) => {
+        todo.completed = state.resolveAll;
+      });
     },
   },
 });
