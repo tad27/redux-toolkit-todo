@@ -36,6 +36,16 @@ const todoSlice = createSlice({
         todo.completed = state.resolveAll;
       });
     },
+    updateTodo(state, action) {
+      state.todos.map((todo) => {
+        if (todo.id === action.payload.id) {
+          todo.id = action.payload.id;
+          todo.title = action.payload.title;
+          todo.completed = action.payload.completed;
+        }
+        return todo;
+      });
+    },
   },
 });
 
@@ -44,5 +54,6 @@ export const {
   deleteTodo,
   toggleTodo,
   toggleAllTodos,
+  updateTodo,
 } = todoSlice.actions;
 export default todoSlice.reducer;

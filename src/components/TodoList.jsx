@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTodo, toggleAllTodos, toggleTodo } from "../features/todoSlice";
+import {
+  deleteTodo,
+  toggleAllTodos,
+  toggleTodo,
+  updateTodo,
+} from "../features/todoSlice";
+import UpdateTodo from "./UpdateTodo";
 
 function TodoList() {
   const { todos, resolveAll } = useSelector((state) => state.todos);
@@ -78,9 +84,13 @@ export const Todo = (todo) => {
       </td>
       <th>
         <div className="flex gap-1">
-          <button className="btn-outline btn-success btn-xs flex items-center">
+          {/* <button
+            onClick={handleUpdate}
+            className="btn-outline btn-success btn-xs flex items-center"
+          >
             Edit
-          </button>
+          </button> */}
+          <UpdateTodo todo={todo} />
           <button
             onClick={() => dispatch(deleteTodo(todo.id))}
             className="btn-outline btn-error btn-xs flex items-center"
