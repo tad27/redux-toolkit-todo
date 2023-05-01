@@ -1,15 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import NewTodoForm from "./components/NewTodoForm";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 import TodoList from "./components/TodoList";
 import { clearTodos } from "./features/todoSlice";
 
 function App() {
-  const dispatch = useDispatch();
   const { todos } = useSelector((state) => state.todos);
-  console.log(todos);
+  const dispatch = useDispatch();
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen text-white max-w-5xl mx-2 lg:mx-auto">
-      <h1 className="dark:text-white text-3xl">Redux Todo</h1>
+    <div className="flex flex-col items-center justify-center min-h-screen max-w-5xl mx-2 lg:mx-auto">
+      <ThemeSwitcher />
+      <h1 className="font-bold my-4 text-3xl">Redux Todo</h1>
       <NewTodoForm />
       <TodoList />
       {todos.length > 0 && (
