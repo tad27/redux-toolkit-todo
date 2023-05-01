@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import NewTodoForm from "./components/NewTodoForm";
 import ThemeSwitcher from "./components/ThemeSwitcher";
@@ -10,9 +11,9 @@ function App() {
   const dispatch = useDispatch();
 
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
-      <div className="flex flex-col items-center min-h-screen max-w-5xl mx-2 lg:mx-auto">
+      <div className="w-full flex-grow flex flex-col items-center max-w-5xl mx-2 lg:mx-auto">
         <NewTodoForm />
         <TodoList />
         {todos.length > 0 && (
@@ -24,7 +25,8 @@ function App() {
           </button>
         )}
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }
 

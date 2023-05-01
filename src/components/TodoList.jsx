@@ -21,7 +21,7 @@ function TodoList() {
     );
   return (
     <div className="overflow-x-auto w-full">
-      <table className="table table-zebra w-full">
+      <table className="table table-zebra w-full mx-4 lg:mx-0">
         {/* head */}
         <thead>
           <tr className="!bg-purple-500">
@@ -35,7 +35,7 @@ function TodoList() {
                 />
               </label>
             </th>
-            <th>Name</th>
+            <th>Title</th>
             <th>Status</th>
             <th>Actions</th>
           </tr>
