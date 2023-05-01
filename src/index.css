@@ -37,3 +37,37 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+html[data-theme='dark'] header {
+  background-color: #282d39;
+  border-bottom: #414a5e;
+}
+html[data-theme='dark'] header button{
+  background-color: #1a1a1a;
+  /* border-bottom: #414a5e; */
+  border-color: #282d39;
+}
+html[data-theme='light'] header button{
+  background-color: #edf0f7;
+  /* border-bottom: #414a5e; */
+  border-color: #dee3ee;
+}
+
+html[data-theme='dark'] header button:hover {
+  background-color: #282d39 !important;
+  border-color: #1a1a1a;
+}
+
+html[data-theme='dark'] #dropdown > div {
+  background-color: #282d39 !important;
+}
+html[data-theme='dark'] #dropdown > div:hover {
+  background-color: #222630 !important;
+}
+
+html[data-theme='light'] #dropdown > div {
+  background-color: #edf0f7 !important;
+}
+html[data-theme='light'] #dropdown > div:hover {
+  background-color: #dee3ee !important;
+}
