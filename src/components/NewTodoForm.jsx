@@ -8,8 +8,10 @@ function NewTodoForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addTodo(newTodo));
-    setNewTodo("");
+    if (newTodo.trim() !== "") {
+      dispatch(addTodo(newTodo));
+      setNewTodo("");
+    }
   };
   return (
     <form
