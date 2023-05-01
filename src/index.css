@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+}
+html[data-theme="light"] {
+--bg: white;
+--text: #1f2937;
+}
+html[data-theme="dark"] {
+  --bg: #2a303c;
+  --text:#a0a7b5;
+}
+html {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  font-family: Arial, Helvetica, sans-serif;
+}
 button {
   border-radius: 8px;
   border: 1px solid transparent;

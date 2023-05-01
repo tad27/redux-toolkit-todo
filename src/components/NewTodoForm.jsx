@@ -8,8 +8,10 @@ function NewTodoForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addTodo(newTodo));
-    setNewTodo("");
+    if (newTodo.trim() !== "") {
+      dispatch(addTodo(newTodo));
+      setNewTodo("");
+    }
   };
   return (
     <form
@@ -25,7 +27,9 @@ function NewTodoForm() {
             onChange={(e) => setNewTodo(e.target.value)}
             className="input input-bordered"
           />
-          <button className="btn bg-teal-600">Add New Todo</button>
+          <button className="btn bg-teal-600 text-slate-200">
+            Add New Todo
+          </button>
         </div>
       </div>
     </form>
